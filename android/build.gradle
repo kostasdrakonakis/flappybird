@@ -34,16 +34,16 @@ android {
 }
 
 dependencies {
-    implementation "com.badlogicgames.gdx:gdx-backend-android:1.6.5"
-    natives "com.badlogicgames.gdx:gdx-platform:1.6.5:natives-armeabi"
-    natives "com.badlogicgames.gdx:gdx-platform:1.6.5:natives-armeabi-v7a"
-    natives "com.badlogicgames.gdx:gdx-platform:1.6.5:natives-x86"
-    implementation "com.badlogicgames.gdx:gdx-box2d:1.6.5"
-    natives "com.badlogicgames.gdx:gdx-box2d-platform:1.6.5:natives-armeabi"
-    natives "com.badlogicgames.gdx:gdx-box2d-platform:1.6.5:natives-armeabi-v7a"
-    natives "com.badlogicgames.gdx:gdx-box2d-platform:1.6.5:natives-x86"
-    implementation "com.badlogicgames.gdx:gdx:1.6.5"
-    implementation "com.badlogicgames.gdx:gdx-box2d:1.6.5"
+    implementation "com.badlogicgames.gdx:gdx-backend-android:1.9.8"
+    natives "com.badlogicgames.gdx:gdx-platform:1.9.8:natives-armeabi"
+    natives "com.badlogicgames.gdx:gdx-platform:1.9.8:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-platform:1.9.8:natives-x86"
+    implementation "com.badlogicgames.gdx:gdx-box2d:1.9.8"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:1.9.8:natives-armeabi"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:1.9.8:natives-armeabi-v7a"
+    natives "com.badlogicgames.gdx:gdx-box2d-platform:1.9.8:natives-x86"
+    implementation "com.badlogicgames.gdx:gdx:1.9.8"
+    implementation "com.badlogicgames.gdx:gdx-box2d:1.9.8"
 }
 
 
