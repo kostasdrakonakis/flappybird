@@ -10,7 +10,7 @@ Simple Implementation of the known Flappy bird game in Android
 License
 -------
 
- Copyright 2017 Kostas Drakonakis
+ Copyright 2018 Kostas Drakonakis
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
