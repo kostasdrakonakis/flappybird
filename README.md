@@ -5,7 +5,7 @@ Flappy Bird [![Build Status](https://travis-ci.org/kostasdrakonakis/flappybird.s
 
 Simple Implementation of the known Flappy bird game in Android
 
-![alt tag](https://github.com/kostasdrakonakis/flappybird/blob/master/screenshot1.jpg)![alt tag](https://github.com/kostasdrakonakis/flappybird/blob/master/screenshot2.jpg)
+![alt tag](https://github.com/kostasdrakonakis/flappybird/blob/master/screenshot1.jpg)  ![alt tag](https://github.com/kostasdrakonakis/flappybird/blob/master/screenshot2.jpg)
 
 License
 -------
