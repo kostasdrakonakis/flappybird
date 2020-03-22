@@ -15,16 +15,18 @@
  */
 package com.kostasdrakonakis.flappybird
 
+import android.app.Activity
 import android.os.Bundle
+import com.github.kostasdrakonakis.androidnavigator.IntentNavigator
+import kotlinx.android.synthetic.main.activity_splash.*
 
-import com.badlogic.gdx.backends.android.AndroidApplication
-import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
-import com.github.kostasdrakonakis.annotation.Intent
+class SplashActivity : Activity() {
 
-@Intent
-class MainActivity : AndroidApplication() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initialize(FlappyBird(), AndroidApplicationConfiguration())
+        setContentView(R.layout.activity_splash)
+        playButton.setOnClickListener {
+            IntentNavigator.startMainActivity(this)
+        }
     }
 }
