@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.kostasdrakonakis.flappybird
+package com.snapyr.flappybird
 
 import android.app.Activity
 import android.os.Bundle
+import android.widget.EditText
 import com.github.kostasdrakonakis.androidnavigator.IntentNavigator
 import kotlinx.android.synthetic.main.activity_splash.*
 
@@ -25,7 +26,19 @@ class SplashActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        var identifyUserId = findViewById(R.id.identify_userid) as EditText;
+        var identifyKey = findViewById(R.id.identify_key) as EditText;
+        var identifyEmail = findViewById(R.id.identify_email) as EditText;
+        var identifyName = findViewById(R.id.identify_name) as EditText;
+
+        var singleton:SnapyrData= SnapyrData.instance;
+
         playButton.setOnClickListener {
+            singleton.identifyUserId=identifyUserId.text.toString()
+            singleton.identifyEmail=identifyEmail.text.toString()
+            singleton.identifyKey=identifyKey.text.toString()
+            singleton.identifyName=identifyName.text.toString()
+
             IntentNavigator.startMainActivity(this)
         }
     }
