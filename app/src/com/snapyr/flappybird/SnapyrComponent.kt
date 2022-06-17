@@ -26,18 +26,28 @@ class SnapyrComponent (private val context: Context) {
     var singleton:SnapyrData= SnapyrData.instance;
 
     internal fun onDoIdentify() {
-
-
-//        Log.d("onDoIdentify",singleton.identifyKey)
-
         Snapyr.with(context).identify(singleton.identifyUserId)
         Snapyr.with(context).identify(Traits().putName(singleton.identifyName))
         Snapyr.with(context).identify(Traits().putEmail(singleton.identifyEmail))
     }
 
+
     internal fun onDoTrack() {
         Log.d("onDoTrack", "Track tapped")
         Snapyr.with(context).track("ClickPlay")
+    }
+
+
+    internal fun yourScore(score: Int) {
+        Log.d("onDoTrack", "Track tapped")
+        if(score % 2 == 0)
+            Snapyr.with(context).track("reachedascoreof_$score")
+    }
+
+
+    internal fun onScore2SendEmail() {
+        Log.d("onDoTrack", "reachedascoreof_2_email")
+        Snapyr.with(context).track("reachedascoreof_2_email")
     }
 
     internal fun onDoFlush() {

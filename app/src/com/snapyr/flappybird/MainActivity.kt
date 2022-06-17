@@ -31,8 +31,8 @@ class MainActivity : AndroidApplication() {
         // Create an snapyr client with the given Android app context and Snapyr write key.
         // Create an snapyr client with the given Android app context and Snapyr write key.
         var singleton:SnapyrData= SnapyrData.instance;
-        context.packageName
-        Log.d("package", context.packageName );
+
+        Log.d("package", context.packageName);
         Log.d("onDoIdentify",singleton.identifyKey)
         val snapyr = Snapyr.Builder(context, singleton.identifyKey)
             .enableDevEnvironment()
