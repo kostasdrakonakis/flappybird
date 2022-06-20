@@ -17,6 +17,7 @@ package com.snapyr.flappybird
 
 import android.content.Context
 import android.util.Log
+import com.snapyr.sdk.Properties
 import com.snapyr.sdk.Snapyr
 import com.snapyr.sdk.Traits
 
@@ -37,9 +38,9 @@ class SnapyrComponent (private val context: Context) {
         Snapyr.with(context).track("ClickPlay")
     }
 
-    internal fun yourScore(number: Int) {
+    internal fun yourScore(scoreNumber: Int) {
         Log.d("onDoTrack", "Track tapped")
-        Snapyr.with(context).track("score_$number")
+        Snapyr.with(context).track("score",  Properties().putValue("total", scoreNumber));
     }
 
     internal fun onDoFlush() {
