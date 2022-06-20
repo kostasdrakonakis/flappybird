@@ -30,10 +30,10 @@ class MainActivity : AndroidApplication() {
         initialize(FlappyBird(context), AndroidApplicationConfiguration())
         // Create an snapyr client with the given Android app context and Snapyr write key.
         // Create an snapyr client with the given Android app context and Snapyr write key.
+
         var singleton:SnapyrData= SnapyrData.instance;
 
-        Log.d("package", context.packageName);
-        Log.d("onDoIdentify",singleton.identifyKey)
+
         val snapyr = Snapyr.Builder(context, singleton.identifyKey)
             .enableDevEnvironment()
             .enableSnapyrPushHandling()
@@ -41,6 +41,9 @@ class MainActivity : AndroidApplication() {
             .recordScreenViews() // Enable this to record screen views automatically
             .flushQueueSize(1)
             .build()
+
+        Log.d("package", context.packageName);
+        Log.d("onDoIdentify",singleton.identifyKey)
 
 // Set the initialized instance as a globally accessible instance.
 

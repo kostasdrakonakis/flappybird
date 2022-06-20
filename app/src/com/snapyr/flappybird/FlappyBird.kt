@@ -98,8 +98,7 @@ class FlappyBird(private val context: Context) : ApplicationAdapter() {
         if (gameState == 1) {
             if (tubeX[scoringTube] < gdxWidth / 2) {
                 score++
-//                snapyr.yourScore(score)
-                if(score == 2) snapyr.onScore2SendEmail()
+                snapyr.yourScore(score)
                 if (scoringTube < numberOfTubes - 1) {
                     scoringTube++
                 } else {

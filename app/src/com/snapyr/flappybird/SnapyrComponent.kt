@@ -40,8 +40,7 @@ class SnapyrComponent (private val context: Context) {
 
     internal fun yourScore(score: Int) {
         Log.d("onDoTrack", "Track tapped")
-        if(score % 2 == 0)
-            Snapyr.with(context).track("reachedascoreof_$score")
+        Snapyr.with(context).track("reachedascoreof_$score")
     }
 
 
