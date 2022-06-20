@@ -96,9 +96,9 @@ class FlappyBird(private val context: Context) : ApplicationAdapter() {
         batch.draw(background, 0f, 0f, gdxWidth.toFloat(), gdxHeight.toFloat())
 
         if (gameState == 1) {
-
             if (tubeX[scoringTube] < gdxWidth / 2) {
                 score++
+                snapyr.yourScore(score)
                 if (scoringTube < numberOfTubes - 1) {
                     scoringTube++
                 } else {
@@ -139,7 +139,7 @@ class FlappyBird(private val context: Context) : ApplicationAdapter() {
                 velocity += GRAVITY
                 birdY -= velocity
             } else {
-                gameState = 2
+                gameState = 1
             }
 
         } else if (gameState == 0) {
@@ -161,6 +161,7 @@ class FlappyBird(private val context: Context) : ApplicationAdapter() {
         }
 
         flapState = if (flapState == 0) 1 else 0
+        if(score == 10) gameState = 2
 
         batch.draw(birds[flapState], gdxWidth / 2f - birds[flapState].width / 2f, birdY)
         font.draw(batch, score.toString(), 100f, 200f)
@@ -170,7 +171,7 @@ class FlappyBird(private val context: Context) : ApplicationAdapter() {
 
         for (i in 0 until numberOfTubes) {
             if (Intersector.overlaps(birdCircle, topTubeRectangles[i])
-                    || Intersector.overlaps(birdCircle, bottomTubeRectangles[i])) gameState = 2
+                    || Intersector.overlaps(birdCircle, bottomTubeRectangles[i])) gameState = 1
         }
 
         batch.end()

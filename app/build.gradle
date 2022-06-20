@@ -35,8 +35,8 @@ android {
 }
 
 dependencies {
-//    implementation 'com.snapyr.sdk.android:snapyr:1.+'
-    implementation files('libs/snapyr-release.aar')
+    implementation 'com.snapyr.sdk.android:snapyr:1.+'
+//    implementation files('libs/snapyr-release.aar')
 
     // additional dependencies required by Snapyr
     implementation('androidx.lifecycle:lifecycle-process:2.2.0')

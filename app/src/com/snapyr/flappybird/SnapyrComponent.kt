@@ -17,6 +17,7 @@ package com.snapyr.flappybird
 
 import android.content.Context
 import android.util.Log
+import com.snapyr.sdk.Properties
 import com.snapyr.sdk.Snapyr
 import com.snapyr.sdk.Traits
 
@@ -26,18 +27,20 @@ class SnapyrComponent (private val context: Context) {
     var singleton:SnapyrData= SnapyrData.instance;
 
     internal fun onDoIdentify() {
-
-
-//        Log.d("onDoIdentify",singleton.identifyKey)
-
         Snapyr.with(context).identify(singleton.identifyUserId)
         Snapyr.with(context).identify(Traits().putName(singleton.identifyName))
         Snapyr.with(context).identify(Traits().putEmail(singleton.identifyEmail))
     }
 
+
     internal fun onDoTrack() {
         Log.d("onDoTrack", "Track tapped")
         Snapyr.with(context).track("ClickPlay")
+    }
+
+    internal fun yourScore(scoreNumber: Int) {
+        Log.d("onDoTrack", "Track tapped")
+        Snapyr.with(context).track("score",  Properties().putValue("total", scoreNumber));
     }
 
     internal fun onDoFlush() {
