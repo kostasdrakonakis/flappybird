@@ -37,16 +37,9 @@ class SnapyrComponent (private val context: Context) {
         Snapyr.with(context).track("ClickPlay")
     }
 
-
-    internal fun yourScore(score: Int) {
+    internal fun yourScore(number: Int) {
         Log.d("onDoTrack", "Track tapped")
-        Snapyr.with(context).track("reachedascoreof_$score")
-    }
-
-
-    internal fun onScore2SendEmail() {
-        Log.d("onDoTrack", "reachedascoreof_2_email")
-        Snapyr.with(context).track("reachedascoreof_2_email")
+        Snapyr.with(context).track("score_$number")
     }
 
     internal fun onDoFlush() {
