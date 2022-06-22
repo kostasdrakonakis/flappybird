@@ -24,7 +24,17 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="com.snapyr.sdk.notifications.ACTION_DEEPLINK" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:host="skookle.com"
+                    android:scheme="snappybirds" />
+            </intent-filter>
+        </activity>
         <!-- Used by Snapyr to automatically track notification receipt/interaction -->
         <activity android:name="com.snapyr.sdk.notifications.SnapyrNotificationListener"
             android:exported="true">

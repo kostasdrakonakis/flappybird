@@ -62,6 +62,7 @@ class FlappyBird(private val context: Context) : ApplicationAdapter() {
     private val snapyr = SnapyrComponent(context)
 
     override fun create() {
+        snapyr.build()
         snapyr.onDoIdentify()
         batch = SpriteBatch()
         background = Texture("bg.png")
@@ -161,7 +162,7 @@ class FlappyBird(private val context: Context) : ApplicationAdapter() {
         }
 
         flapState = if (flapState == 0) 1 else 0
-        if(score == 10) gameState = 2
+        if(score == 100) gameState = 2
 
         batch.draw(birds[flapState], gdxWidth / 2f - birds[flapState].width / 2f, birdY)
         font.draw(batch, score.toString(), 100f, 200f)

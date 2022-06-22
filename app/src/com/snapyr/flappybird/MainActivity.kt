@@ -15,40 +15,83 @@
  */
 package com.snapyr.flappybird
 
+import android.R
+import android.app.AlertDialog
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.badlogic.gdx.backends.android.AndroidApplication
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
 import com.github.kostasdrakonakis.annotation.Intent
-import com.snapyr.sdk.Snapyr
 
 
 @Intent
 class MainActivity : AndroidApplication() {
+    var isRegistered = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialize(FlappyBird(context), AndroidApplicationConfiguration())
         // Create an snapyr client with the given Android app context and Snapyr write key.
         // Create an snapyr client with the given Android app context and Snapyr write key.
 
-        var singleton:SnapyrData= SnapyrData.instance;
+//        var snapyr = Snapyr.Builder(context, SnapyrData.instance.identifyKey)
+////            .enableDevEnvironment()
+//            .enableSnapyrPushHandling()
+//            .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically
+//            .recordScreenViews() // Enable this to record screen views automatically
+//            .flushQueueSize(1);
+////        Log.d("!SnapyrData.instance.registered",
+////            (!isRegistered).toString());
+////        if(!Snapyr.Valid()) {
+//            Snapyr.setSingletonInstance(snapyr.build());
+////        }
 
 
-        val snapyr = Snapyr.Builder(context, singleton.identifyKey)
-            .enableDevEnvironment()
-            .enableSnapyrPushHandling()
-            .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically
-            .recordScreenViews() // Enable this to record screen views automatically
-            .flushQueueSize(1)
-            .build()
 
-        Log.d("package", context.packageName);
-        Log.d("onDoIdentify",singleton.identifyKey)
-
-// Set the initialized instance as a globally accessible instance.
-
-// Set the initialized instance as a globally accessible instance.
-        Snapyr.setSingletonInstance(snapyr)
+        if(intent != null) {
+            val currentIntent: Uri? = intent.data;
+            handleOpenIntent(currentIntent)
+        }
     }
 
+    private fun handleOpenIntent(data: Uri?) {
+//        val data: Uri = intent.value()
+        if (data == null) {
+            Toast.makeText(this, "No deep link info provided", Toast.LENGTH_LONG).show()
+            return
+        }
+        val isCorrect = data.getQueryParameter("correct")
+        Log.d("isCorrect", isCorrect.toString())
+        if (isCorrect != "") {
+            if(isCorrect == "true")
+                correct()
+            else if (isCorrect == "false"){
+                wrong()
+            }
+            Toast.makeText(this, isCorrect, Toast.LENGTH_LONG).show()
+            Log.e("Snapyr", "Sample app open intent data: $data")
+        }
+    }
+
+    private fun correct() {
+        AlertDialog.Builder(context)
+            .setTitle("Congratulations!")
+            // The dialog is automatically dismissed when a dialog button is clicked.
+            .setPositiveButton(
+                R.string.yes, null)
+            .setNegativeButton(R.string.no, null)
+            .setView(com.snapyr.flappybird.R.layout.alert_view)
+            .show()
+    }
+
+    private fun wrong() {
+        AlertDialog.Builder(context)
+            .setTitle("Sorry!")
+            .setPositiveButton(
+                R.string.yes, null)
+            .setNegativeButton(R.string.no, null)
+            .setView(com.snapyr.flappybird.R.layout.wrong_alert_view)
+            .show()
+    }
 }

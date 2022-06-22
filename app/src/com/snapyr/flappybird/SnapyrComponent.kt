@@ -26,16 +26,30 @@ class SnapyrComponent (private val context: Context) {
 
     var singleton:SnapyrData= SnapyrData.instance;
 
+    internal fun build() {
+        var snapyr = Snapyr.Builder(context, SnapyrData.instance.identifyKey)
+//            .enableDevEnvironment()
+            .enableSnapyrPushHandling()
+            .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically
+            .recordScreenViews() // Enable this to record screen views automatically
+            .flushQueueSize(1);
+        if(!Snapyr.Valid())
+            Snapyr.setSingletonInstance(snapyr.build());
+    }
+
     internal fun onDoIdentify() {
         Snapyr.with(context).identify(singleton.identifyUserId)
         Snapyr.with(context).identify(Traits().putName(singleton.identifyName))
         Snapyr.with(context).identify(Traits().putEmail(singleton.identifyEmail))
+        Snapyr.with(context)
+            .identify(singleton.identifyUserId, Traits().putValue("games_played", 0), null)
     }
+
 
 
     internal fun onDoTrack() {
         Log.d("onDoTrack", "Track tapped")
-        Snapyr.with(context).track("ClickPlay")
+        Snapyr.with(context).track("register1")
     }
 
     internal fun yourScore(scoreNumber: Int) {

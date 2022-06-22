@@ -27,10 +27,13 @@ class SplashActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         var identifyUserId = findViewById(R.id.identify_userid) as EditText;
+        identifyUserId.setText("alina3")
         var identifyKey = findViewById(R.id.identify_key) as EditText;
+        identifyKey.setText("HheJr6JJGowjvMvJGq9FqunE0h8EKAIG")
         var identifyEmail = findViewById(R.id.identify_email) as EditText;
+        identifyEmail.setText("alina@snapyr.com")
         var identifyName = findViewById(R.id.identify_name) as EditText;
-
+        identifyName.setText("alina3")
         var singleton:SnapyrData= SnapyrData.instance;
 
         playButton.setOnClickListener {
