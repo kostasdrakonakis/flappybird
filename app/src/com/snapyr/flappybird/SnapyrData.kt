@@ -1,6 +1,7 @@
 package com.snapyr.flappybird
 class SnapyrData private constructor() {
 
+
     fun destroy() {
         ourInstance = null
     }
@@ -15,9 +16,10 @@ class SnapyrData private constructor() {
                 return ourInstance!!
             }
     }
-
+        var registered: Boolean = false;
         var identifyKey: String = "";
         var identifyUserId: String = "";
         var identifyName: String = "";
         var identifyEmail: String = "";
+        var identifyPhone: String = "";
 }

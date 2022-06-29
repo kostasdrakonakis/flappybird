@@ -16,6 +16,7 @@
 package com.snapyr.flappybird
 
 import android.content.Context
+import android.preference.PreferenceManager
 import android.util.Log
 import com.snapyr.sdk.Properties
 import com.snapyr.sdk.Snapyr
@@ -26,16 +27,45 @@ class SnapyrComponent (private val context: Context) {
 
     var singleton:SnapyrData= SnapyrData.instance;
 
+    internal fun build() {
+        var snapyr = Snapyr.Builder(context, SnapyrData.instance.identifyKey)
+//            .enableDevEnvironment()
+            .enableSnapyrPushHandling()
+            .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically
+            .recordScreenViews() // Enable this to record screen views automatically
+            .flushQueueSize(1);
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        if (!prefs.getBoolean("firstTime", false)) {
+
+            if(!Snapyr.Valid())
+                Snapyr.setSingletonInstance(snapyr.build());
+            val editor = prefs.edit()
+            editor.putBoolean("firstTime", true)
+            editor.putBoolean("register", false)
+            editor.commit()
+        }
+    }
+
     internal fun onDoIdentify() {
         Snapyr.with(context).identify(singleton.identifyUserId)
         Snapyr.with(context).identify(Traits().putName(singleton.identifyName))
         Snapyr.with(context).identify(Traits().putEmail(singleton.identifyEmail))
+        Snapyr.with(context).identify(Traits().putEmail(singleton.identifyPhone))
+        Snapyr.with(context)
+            .identify(singleton.identifyUserId, Traits().putValue("games_played", 0), null)
     }
+
 
 
     internal fun onDoTrack() {
         Log.d("onDoTrack", "Track tapped")
-        Snapyr.with(context).track("ClickPlay")
+        val prefs1 = PreferenceManager.getDefaultSharedPreferences(context)
+        if (!prefs1.getBoolean("register", false)) {
+        Snapyr.with(context).track("register1")
+            val editor = prefs1.edit()
+            editor.putBoolean("register", true)
+            editor.commit()
+        }
     }
 
     internal fun yourScore(scoreNumber: Int) {

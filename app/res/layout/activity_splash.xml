@@ -46,6 +46,14 @@
             android:layout_width="match_parent"
             />
 
+        <EditText
+            android:id="@+id/identify_phone"
+            android:layout_weight="0.55"
+            android:hint="Phone"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            />
+
         <Button
             android:id="@+id/playButton"
             android:layout_alignParentTop="true"
