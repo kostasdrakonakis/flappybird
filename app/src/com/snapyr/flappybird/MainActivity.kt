@@ -20,7 +20,6 @@ import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.badlogic.gdx.backends.android.AndroidApplication
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
 import com.github.kostasdrakonakis.annotation.Intent
@@ -28,26 +27,9 @@ import com.github.kostasdrakonakis.annotation.Intent
 
 @Intent
 class MainActivity : AndroidApplication() {
-    var isRegistered = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialize(FlappyBird(context), AndroidApplicationConfiguration())
-        // Create an snapyr client with the given Android app context and Snapyr write key.
-        // Create an snapyr client with the given Android app context and Snapyr write key.
-
-//        var snapyr = Snapyr.Builder(context, SnapyrData.instance.identifyKey)
-////            .enableDevEnvironment()
-//            .enableSnapyrPushHandling()
-//            .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically
-//            .recordScreenViews() // Enable this to record screen views automatically
-//            .flushQueueSize(1);
-////        Log.d("!SnapyrData.instance.registered",
-////            (!isRegistered).toString());
-////        if(!Snapyr.Valid()) {
-//            Snapyr.setSingletonInstance(snapyr.build());
-////        }
-
-
 
         if(intent != null) {
             val currentIntent: Uri? = intent.data;
@@ -56,9 +38,7 @@ class MainActivity : AndroidApplication() {
     }
 
     private fun handleOpenIntent(data: Uri?) {
-//        val data: Uri = intent.value()
         if (data == null) {
-            Toast.makeText(this, "No deep link info provided", Toast.LENGTH_LONG).show()
             return
         }
         val isCorrect = data.getQueryParameter("correct")
@@ -69,8 +49,6 @@ class MainActivity : AndroidApplication() {
             else if (isCorrect == "false"){
                 wrong()
             }
-            Toast.makeText(this, isCorrect, Toast.LENGTH_LONG).show()
-            Log.e("Snapyr", "Sample app open intent data: $data")
         }
     }
 

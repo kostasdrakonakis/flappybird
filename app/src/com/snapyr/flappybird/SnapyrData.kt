@@ -21,4 +21,5 @@ class SnapyrData private constructor() {
         var identifyUserId: String = "";
         var identifyName: String = "";
         var identifyEmail: String = "";
+        var identifyPhone: String = "";
 }
