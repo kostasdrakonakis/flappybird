@@ -55,12 +55,18 @@
             />
 
         <Button
+            android:id="@+id/env"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Env" />
+
+        <Button
             android:id="@+id/playButton"
             android:layout_alignParentTop="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Play" />
-
 
         </LinearLayout>
 
