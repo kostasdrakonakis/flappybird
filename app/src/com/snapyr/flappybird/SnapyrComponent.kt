@@ -32,6 +32,8 @@ class SnapyrComponent (private val context: Context) {
         Log.d("singleton.env", singleton.env);
                 if(singleton.env == "dev")
                     snapyr.enableDevEnvironment()
+        if(singleton.env == "stg")
+            snapyr.enableStageEnvironment()
         snapyr.enableSnapyrPushHandling()
             .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically
             .recordScreenViews() // Enable this to record screen views automatically

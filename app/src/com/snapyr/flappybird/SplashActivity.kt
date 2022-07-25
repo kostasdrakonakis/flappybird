@@ -61,10 +61,15 @@ class SplashActivity : Activity() {
                 envButton.setText("Env: dev")
 
             }
-            builder.setNegativeButton("prod") { dialog, which ->
+            builder.setNeutralButton("prod") { dialog, which ->
                 singleton.env = "prod"
                 identifyKey.setText("HheJr6JJGowjvMvJGq9FqunE0h8EKAIG")
                 envButton.setText("Env: prod")
+            }
+            builder.setNegativeButton("stg") { dialog, which ->
+                singleton.env = "stg"
+                identifyKey.setText("kuxCvTgQdcXAgNjrhrMP2U46VIhUi6Wz")
+                envButton.setText("Env: stg")
             }
             builder.show()
         }
