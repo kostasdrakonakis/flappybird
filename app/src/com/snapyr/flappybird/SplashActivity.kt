@@ -16,7 +16,10 @@
 package com.snapyr.flappybird
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import com.github.kostasdrakonakis.androidnavigator.IntentNavigator
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -34,9 +37,9 @@ class SplashActivity : Activity() {
 //        identifyEmail.setText("alina@snapyr.com")
         var identifyName = findViewById(R.id.identify_name) as EditText;
 //        identifyName.setText("alina3")
-        var identifyPhone = findViewById(R.id.identify_name) as EditText;
+        var identifyPhone = findViewById(R.id.identify_phone) as EditText;
 
-
+        var envButton = findViewById(R.id.env) as Button
         var singleton:SnapyrData= SnapyrData.instance;
 
         playButton.setOnClickListener {
@@ -47,6 +50,28 @@ class SplashActivity : Activity() {
             singleton.identifyPhone=identifyPhone.text.toString()
 
             IntentNavigator.startMainActivity(this)
+        }
+
+        env.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+                .setTitle("Choose Env!")
+            builder.setPositiveButton("dev") { dialog, which ->
+                singleton.env = "dev"
+                identifyKey.setText("38bT1SbGJ0A12CJqk8DFRzypJnIylRmg")
+                envButton.setText("Env: dev")
+
+            }
+            builder.setNeutralButton("prod") { dialog, which ->
+                singleton.env = "prod"
+                identifyKey.setText("HheJr6JJGowjvMvJGq9FqunE0h8EKAIG")
+                envButton.setText("Env: prod")
+            }
+            builder.setNegativeButton("stg") { dialog, which ->
+                singleton.env = "stg"
+                identifyKey.setText("kuxCvTgQdcXAgNjrhrMP2U46VIhUi6Wz")
+                envButton.setText("Env: stg")
+            }
+            builder.show()
         }
     }
 }

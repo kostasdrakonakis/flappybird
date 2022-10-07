@@ -29,8 +29,12 @@ class SnapyrComponent (private val context: Context) {
 
     internal fun build() {
         var snapyr = Snapyr.Builder(context, SnapyrData.instance.identifyKey)
-//            .enableDevEnvironment()
-            .enableSnapyrPushHandling()
+        Log.d("singleton.env", singleton.env);
+                if(singleton.env == "dev")
+                    snapyr.enableDevEnvironment()
+        if(singleton.env == "stg")
+            snapyr.enableStageEnvironment()
+        snapyr.enableSnapyrPushHandling()
             .trackApplicationLifecycleEvents() // Enable this to record certain application events automatically
             .recordScreenViews() // Enable this to record screen views automatically
             .flushQueueSize(1);
@@ -50,7 +54,7 @@ class SnapyrComponent (private val context: Context) {
         Snapyr.with(context).identify(singleton.identifyUserId)
         Snapyr.with(context).identify(Traits().putName(singleton.identifyName))
         Snapyr.with(context).identify(Traits().putEmail(singleton.identifyEmail))
-        Snapyr.with(context).identify(Traits().putEmail(singleton.identifyPhone))
+        Snapyr.with(context).identify(Traits().putPhone(singleton.identifyPhone))
         Snapyr.with(context)
             .identify(singleton.identifyUserId, Traits().putValue("games_played", 0), null)
     }

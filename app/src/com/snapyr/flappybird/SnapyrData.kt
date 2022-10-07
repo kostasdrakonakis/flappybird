@@ -16,7 +16,7 @@ class SnapyrData private constructor() {
                 return ourInstance!!
             }
     }
-        var registered: Boolean = false;
+        var env: String = "";
         var identifyKey: String = "";
         var identifyUserId: String = "";
         var identifyName: String = "";

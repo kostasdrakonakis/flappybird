@@ -13,13 +13,14 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:name=".MyApp"
         >
-        <activity android:name="com.snapyr.flappybird.SplashActivity">
+        <activity android:exported="true" android:name="com.snapyr.flappybird.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:exported="true"
             android:name="com.snapyr.flappybird.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"

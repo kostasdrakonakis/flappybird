@@ -48,6 +48,8 @@ class MainActivity : AndroidApplication() {
                 correct()
             else if (isCorrect == "false"){
                 wrong()
+            } else {
+                issue()
             }
         }
     }
@@ -66,6 +68,17 @@ class MainActivity : AndroidApplication() {
     private fun wrong() {
         AlertDialog.Builder(context)
             .setTitle("Sorry!")
+            .setPositiveButton(
+                R.string.yes, null)
+            .setNegativeButton(R.string.no, null)
+            .setView(com.snapyr.flappybird.R.layout.wrong_alert_view)
+            .show()
+    }
+
+
+    private fun issue() {
+        AlertDialog.Builder(context)
+            .setTitle("Wrong deeplink!")
             .setPositiveButton(
                 R.string.yes, null)
             .setNegativeButton(R.string.no, null)
