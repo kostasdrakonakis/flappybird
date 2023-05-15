@@ -43,7 +43,7 @@ dependencies {
     implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
     implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
     implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.21"
     implementation 'com.badlogicgames.gdx:gdx-platform:1.9.8:natives-armeabi'
     implementation 'com.badlogicgames.gdx:gdx-platform:1.9.8:natives-armeabi-v7a'
