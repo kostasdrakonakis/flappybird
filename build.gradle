@@ -1,6 +1,7 @@
 buildscript {
     ext{
         gdxVersion = '1.12.1'
+        kotlinVersion = '2.0.21'
     }
     repositories {
         google()
@@ -9,8 +10,8 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.20"
-        classpath 'com.android.tools.build:gradle:8.6.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath 'com.android.tools.build:gradle:8.7.1'
     }
 }
 
@@ -23,6 +24,6 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }
