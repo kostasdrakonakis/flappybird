@@ -1,7 +1,7 @@
 buildscript {
     ext{
         gdxVersion = '1.13.1'
-        kotlinVersion = '2.1.20'
+        kotlinVersion = '2.2.0'
     }
     repositories {
         google()
