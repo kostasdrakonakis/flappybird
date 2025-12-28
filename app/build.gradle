@@ -4,11 +4,11 @@ apply plugin: 'kotlin-kapt'
 
 android {
     namespace = "com.kostasdrakonakis.flappybird"
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode 1
         versionName "1.0"
         applicationId "com.kostasdrakonakis.flappybird"
@@ -17,7 +17,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -43,17 +43,21 @@ android {
 
 dependencies {
     implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
-    implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+    implementation 'androidx.core:core-ktx:1.17.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
     implementation "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-    implementation 'androidx.core:core-ktx:1.16.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-    implementation 'com.badlogicgames.gdx:gdx-platform:1.9.8:natives-armeabi'
-    implementation 'com.badlogicgames.gdx:gdx-platform:1.9.8:natives-armeabi-v7a'
-    implementation 'com.badlogicgames.gdx:gdx-platform:1.9.8:natives-x86'
-    implementation 'com.badlogicgames.gdx:gdx-box2d-platform:1.9.8:natives-armeabi'
-    implementation 'com.badlogicgames.gdx:gdx-box2d-platform:1.9.8:natives-armeabi-v7a'
-    implementation 'com.badlogicgames.gdx:gdx-box2d-platform:1.9.8:natives-x86'
+
+    runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
+    runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-arm64-v8a"
+    runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
+    runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
+
+    runtimeOnly "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
+    runtimeOnly "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-arm64-v8a"
+    runtimeOnly "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
+    runtimeOnly "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86_64"
+
     implementation 'com.github.kostasdrakonakis:android-navigator:1.2.6'
     kapt 'com.github.kostasdrakonakis:android-navigator-compiler:1.2.6'
 }
