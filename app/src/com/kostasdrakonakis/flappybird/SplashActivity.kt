@@ -17,9 +17,9 @@ package com.kostasdrakonakis.flappybird
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import com.github.kostasdrakonakis.androidnavigator.IntentNavigator
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : Activity() {
@@ -28,7 +28,7 @@ class SplashActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         findViewById<Button>(R.id.playButton).setOnClickListener {
-            IntentNavigator.startMainActivity(this)
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 }
